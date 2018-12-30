@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8>
+    <title>Grid布局-在不影响dom结构的前提下实现组件的响应式位移</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">header</div>
+        <div class="subtitle">subtitle</div>
+        <div class="left">left</div>
+        <div class="middle">middle</div>
+        <div class="right-top" style="background-color: rgba(244, 213, 171, 1); border: 2px solid rgb(224, 162, 75);">right-top</div>
+        <div class="right-middle" style="background-color: rgba(244, 213, 171, 1); border: 2px solid rgb(224, 162, 75);">right-middle</div>
+        <div class="right-bottom" style="background-color: rgba(244, 213, 171, 1); border: 2px solid rgb(224, 162, 75);">right-bottom</div>
+        <div class="footer">footer</div>
+    </div>
+</body>
+
+<style>
+    .container{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+        grid-auto-rows: minmax(50px, auto);
+    }
+    .container div{
+        background-color: rgba(189, 249, 255, 1);
+        border: 2px solid rgb(77, 170, 179, 1);
+        border-radius: 5px;
+        text-align: center;
+        line-height: 50px;
+    }
+
+    @media only screen and (min-width: 768px) {
+        .header{
+            grid-column: 1;
+            grid-row: 1;
+        }
+        .subtitle{
+            grid-column: 1;
+            grid-row: 2;
+        }
+        .left{
+            grid-column: 1;
+            grid-row: 4 / 7;
+        }
+        .middle{
+            grid-column: 1;
+            grid-row: 8 / 11;
+        }
+        .right-top{
+            grid-column: 1;
+            grid-row: 3;
+        }
+        .right-middle{
+            grid-column: 1;
+            grid-row: 7;
+        }
+        .right-bottom{
+            grid-column: 1;
+            grid-row: 11;
+        }
+        .footer{
+            grid-column: 1;
+            grid-row: 12;
+        }
+    } 
+
+    @media only screen and (min-width: 992px) {
+        .header{
+            grid-column: 1 / 3;
+            grid-row: 1;
+        }
+        .subtitle{
+            grid-column: 1 / 3;
+            grid-row: 2;
+        }
+        .left{
+            grid-column: 1;
+            grid-row: 4 / 7;
+        }
+        .middle{
+            grid-column: 2;
+            grid-row: 4 / 7;
+        }
+        .right-top{
+            grid-column: 1 / 3;
+            grid-row: 3;
+        }
+        .right-middle{
+            grid-column: 1;
+            grid-row: 7;
+        }
+        .right-bottom{
+            grid-column: 2;
+            grid-row: 7;
+        }
+        .footer{
+            grid-column: 1 / 3;
+            grid-row: 8;
+        }
+    } 
+
+    @media only screen and (min-width: 1200px) {
+        .header{
+            grid-column: 1 / 4;
+            grid-row: 1;
+        }
+        .subtitle{
+            grid-column: 1 / 4;
+            grid-row: 2;
+        }
+        .left{
+            grid-column: 1;
+            grid-row: 3 / 6;
+        }
+        .middle{
+            grid-column: 2;
+            grid-row: 3 / 6;
+        }
+        .right-top{
+            grid-column: 3;
+            grid-row: 3;
+        }
+        .right-middle{
+            grid-column: 3;
+            grid-row: 4;
+        }
+        .right-bottom{
+            grid-column: 3;
+            grid-row: 5;
+        }
+        .footer{
+            grid-column: 1 / 4;
+            grid-row: 6;
+        }
+    }
+</style>
+
+</html>
